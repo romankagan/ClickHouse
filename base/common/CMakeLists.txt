@@ -10,8 +10,6 @@ set (SRCS
     getThreadId.cpp
     JSON.cpp
     LineReader.cpp
-    mremap.cpp
-    phdr_cache.cpp
     preciseExp10.cpp
     setTerminalEcho.cpp
     shift10.cpp
