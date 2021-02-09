@@ -3,7 +3,6 @@
 #include <Poco/Util/LayeredConfiguration.h>
 #include <Poco/Util/MapConfiguration.h>
 
-
 void argsToConfig(const Poco::Util::Application::ArgVec & argv, Poco::Util::LayeredConfiguration & config, int priority)
 {
     /// Parsing all args and converting to config layer
@@ -41,13 +40,12 @@ void argsToConfig(const Poco::Util::Application::ArgVec & argv, Poco::Util::Laye
         {
             key = "";
         }
-
-        if (key_start == std::string::npos)
+        if (key_start == std::string::npos){
             continue;
-
-        if (pos_minus > key_start)
+        }
+        if (pos_minus > key_start){
             continue;
-
+        }
         key = arg.substr(key_start, pos_eq - key_start);
         if (key.empty())
             continue;
@@ -58,9 +56,7 @@ void argsToConfig(const Poco::Util::Application::ArgVec & argv, Poco::Util::Laye
         map_config->setString(key, value);
         key = "";
     }
-
     Poco::Util::MapConfiguration::Keys keys;
     map_config->keys(keys);
-
     config.add(map_config, priority);
 }
